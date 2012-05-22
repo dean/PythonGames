@@ -32,7 +32,9 @@ class Deck(object):
 		return len(self.arr)
 	def get(self, idx):
 		return self.arr(idx)
-	
+	def add(self, cards):
+		for c in cards:
+			self.arr.append(c);	
 	
 		
 		

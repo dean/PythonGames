@@ -58,14 +58,18 @@ class Blackjack(object):
 			if (player_card_val>21):
 				print self.player.get_name()+" busted!"
 				self.dist_winnings(ai)
+				self.deck.add(self.player.return_hand())
+				self.deck.add(ai.return_hand())
 				return
 			self.print_hand(self.player)
 		while self.should_hit(ai_card_val):
 			self.hit(ai)
-			ai_card_val = self.count_cards
+			ai_card_val = self.count_cards(ai.get_hand())
 			if(ai_card_val >21):
 				print ai.get_name()+" busted!"
 				self.dist_winnings(self.player)
+				self.deck.add(self.player.return_hand())
+				self.deck.add(ai.return_hand())
 				return
 		self.print_hand(ai)
 		if player_card_val > ai_card_val :
@@ -73,7 +77,9 @@ class Blackjack(object):
 		elif ai_card_val > player_card_val:
 			self.dist_winnings(ai)
 		else:
-			self.dist_winnings_equalls(ai)
+			self.dist_winnings_equally(ai)
+		self.deck.add(self.player.return_hand())
+		self.deck.add(ai.return_hand())
 		return
 	
 		

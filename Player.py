@@ -14,3 +14,10 @@ class Player(object):
 		return self.hand
 	def get_hand_size(self):
 		return len(self.hand)
+	def return_hand(self):
+		temp = []
+		for c in self.hand:
+			temp.append(c);
+		self.hand[:] = []
+		return temp;
+		
